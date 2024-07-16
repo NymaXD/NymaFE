@@ -60,7 +60,7 @@ Con estos comandos vas a poder realizar de manera sencilla las tareas más comun
   <p>Permite visualizar en pantalla el contenido de un archivo de texto plano.</p>
 
       view archivo.txt
-
+  
 
 ## :open_file_folder: Manipulación de directorios</h2>
 Con estos comandos vas a poder manipular los directorios, acceder a ellos, inspeccionarlos y eliminarlos
@@ -93,7 +93,7 @@ Con estos comandos vas a poder manipular los directorios, acceder a ellos, inspe
 * ### double
   <p>Duplica un directorio en el directorio actual.</p>
 
-      double archivo.txt
+      double /ruta/del/directorio
 
 * ### home
   <p>Accede al directorio raíz del usuario.</p>
