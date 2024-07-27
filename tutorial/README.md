@@ -1,6 +1,6 @@
 # :question: Tutorial
 
-Aquí encontrarás un breve resumen de cómo funciona la sintaxis del lenguaje. Más abajo encontrarás la <a href="#notebook-lista-de-comandos">lista completa</a> de comandos.
+Aquí encontrarás un breve resumen de cómo funciona la sintaxis del lenguaje. Más abajo encontrarás la <a href="#book-lista-de-comandos">lista completa</a> de comandos.
 
 ## Sintaxis
 
