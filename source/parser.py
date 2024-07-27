@@ -9,39 +9,45 @@ start: command
 command: back | cd | clear | copy | create | create_dir | delete | double | exec | exit | help | home | insp | ls | move | open_f | rename | view | write
 
 back: "back"
-cd: "cd" (dir | QUOTED_SOURCE)
+cd: "cd" dir
 clear: "clear"
 copy: "copy" source destination
-create: "create" filename
-create_dir: "create -d" (dir | QUOTED_SOURCE)
+create: "create" file
+create_dir: "create -d" dir
 delete: "del" source
 double: "double" source
-exec: "exec" filename
+exec: "exec" file
 exit: "exit"
 help: "help" FLAG?
 home: "home"
-insp: "insp" (dir | QUOTED_SOURCE)?
+insp: "insp" dir?
 ls: ("list" | "ls") FLAG?
 move: "move" source destination
-open_f: "open" filename
+open_f: "open" file
 rename: "rename" source source
-view: "view" filename
-write: "write" filename QUOTED_SOURCE
+view: "view" file
+write: "write" file text
 
 
-source: (file | dir | QUOTED_SOURCE)
-destination: dir | QUOTED_SOURCE
-filename: (file | QUOTED_SOURCE)
+source: file | dir
+destination: dir
+text: "\"" (/[^"]+/) "\""
 
-dir: /[a-zA-Z0-9\/\\:_-]+/
-file: /[a-zA-Z0-9._-]+/
-QUOTED_SOURCE: "\"" (/[^"]+/) "\""
+dir: quoted_dir | unquoted_dir
+
+    quoted_dir: "\"" (/[^".]+/) "\""
+    unquoted_dir: /[a-zA-Z0-9\/_-]+/
+
+file: quoted_file | unquoted_file
+
+    quoted_file: "\"" (/[^"\/]+/) "\""
+    unquoted_file: /[a-zA-Z0-9\/_.-]+/
+
 
 FLAG: "-d" | "-u" | "-f" | "help" | "list"
 
 %import common.WS
 %ignore WS
-
 """
 
 parser = Lark(grammar, start='start', parser='earley')
