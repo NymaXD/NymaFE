@@ -29,11 +29,6 @@ Con estos comandos vas a poder realizar de manera sencilla las tareas más comun
 
       double archivo.txt
 
-* ### insp
-  <p>Muestra las propiedades de un archivo.</p>
-
-      insp archivo.txt
-
 * ### move
   <p>Mueve un archivo en el directorio especificado.</p>
 
@@ -48,7 +43,12 @@ Con estos comandos vas a poder realizar de manera sencilla las tareas más comun
   <p>Permite renombrar un archivo.</p>
 
       rename archivo.txt archivo_renombrado.txt
+  
+* ### view
+  <p>Permite visualizar en pantalla el contenido de un archivo de texto plano.</p>
 
+      view archivo.txt
+  
 * ### write
   <p>Añade una nueva línea en un archivo de texto plano.</p>
 
@@ -56,11 +56,7 @@ Con estos comandos vas a poder realizar de manera sencilla las tareas más comun
 
   > Debes colocar el texto entre comillas dobles ("") obligatoriamente.
   
-* ### view
-  <p>Permite visualizar en pantalla el contenido de un archivo de texto plano.</p>
 
-      view archivo.txt
-  
 
 ## :open_file_folder: Manipulación de directorios</h2>
 Con estos comandos vas a poder manipular los directorios, acceder a ellos, inspeccionarlos y eliminarlos
@@ -100,13 +96,23 @@ Con estos comandos vas a poder manipular los directorios, acceder a ellos, inspe
 
       home
   
-* ### insp -d
+* ### insp
   <p>Muestra un recuento de los archivos y carpetas de un directorio.</p>
 
-      insp -d /ruta/del/directorio/
+      insp /ruta/del/directorio/
 
   > Si no se introduce un directorio se inspeccionará el directorio actual
 
+* ### move
+  <p>Mueve un directorio en el directorio especificado.</p>
+
+      move /directorio/ /ruta/de/destino
+
+* ### rename
+  <p>Permite renombrar un directorio.</p>
+
+      rename /directorio/ /NuevoNombre/
+  
 
 
 ## :memo: Utilidades</h2>
@@ -148,6 +154,10 @@ Comandos para funciones generales.
 
         help -u
 
+  * (comando) Para mostrar la ayuda de un comando
+
+        help list
+
 * ### ls / list
   <p>Lista archivos y carpetas en el directorio actual</p>
 
@@ -163,9 +173,5 @@ Comandos para funciones generales.
   * -d Para listar solo directorios
 
         list -d
-
-  * --< ext > Para listar solo archivos con una extensión específica
-
-        list --html
       
   > Ambos comandos "ls" y "list" funcionan con las flags.
