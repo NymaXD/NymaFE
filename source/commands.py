@@ -518,6 +518,9 @@ class Commands(Transformer):
         except Exception as e:
             error(e)
 
+        else:
+            logging.info(f"Abriendo el archivo '{file}'.")
+
 
     @convert_args
     def rename(self, args):
@@ -569,3 +572,6 @@ class Commands(Transformer):
             error("Permisos insuficientes.")
         except Exception as e:
             error(e)
+
+        else:
+            logging.info(f"Se ha escrito en el archivo '{file}'.")
