@@ -56,6 +56,11 @@ Adicionalmente, puedes escribir un comando seguido de 'help' para ver más infor
     help help
     help list
 
+Las funciones 'info' y 'write' reciben una línea de texto como argumento, la cual debe estar escrita entre comillas dobles ("")
+
+    info "Hello world"
+    write file.txt "Hello world"
+
 # :book: Lista de comandos
 Aquí está la lista completa de comandos
 
