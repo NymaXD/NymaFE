@@ -2,7 +2,6 @@
 
 from parser import command_executor
 from commands import error, warn, clear
-from lark.exceptions import UnexpectedToken, UnexpectedCharacters, UnexpectedEOF
 
 def main():
     """Main interface"""
@@ -18,15 +17,6 @@ def main():
 
         except KeyboardInterrupt:
             warn("Ctrl + C")
-
-        except UnexpectedToken as e:
-            error("Error de sintaxis. Escribe 'help' para más informacion.")
-
-        except UnexpectedCharacters as e:
-            error("Error de sintaxis. Escribe 'help' para más informacion.")
-
-        except UnexpectedEOF as e:
-            error("Error de sintaxis. Escribe 'help' para más informacion.")
             
         except Exception as e:
             error(e)

@@ -26,6 +26,7 @@ def help_all():
         ["help", "Muestra los comandos disponibles."],
         ["help (comando)", "Muestra la ayuda de un comando."],
         ["home", "Accede al directorio raíz del usuario."],
+        ["info", "Imprime un mensaje en consola."],
         ["insp", "Inspecciona el contenido de un directorio."],
         ["ls / list", "Lista archivos y carpetas en el directorio actual."],
         ["move", "Mueve un archivo en el directorio especificado."],
@@ -92,6 +93,7 @@ def help_utilities():
         ["exit", "Sale del interprete."],
         ["help", "Muestra los comandos disponibles."],
         ["help (comando)", "Muestra la ayuda de un comando."],
+        ["info", "Imprime un mensaje en consola."],
         ["ls / list", "Lista archivos y carpetas en el directorio actual."],
     ]
 

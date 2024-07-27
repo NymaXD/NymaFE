@@ -5,6 +5,8 @@ import os
 import shutil
 import time
 import stat
+import logging
+from datetime import datetime
 from pathlib import Path
 from tabulate import tabulate
 from colorama import init, Style, Fore
@@ -19,6 +21,36 @@ current_path = Path.cwd()
 home_path = Path.home()
 
 # Funciones internas
+def create_log():
+    """Crea un archivo de logs cuyo nombre es la fecha actual."""
+    
+    if os.name == "nt":
+        cache_path = home_path / "AppData/Local/NymaFE"
+    else:
+        cache_path = home_path / ".cache/NymaFE"
+
+    if not cache_path.exists():
+        cache_path.mkdir()
+
+    date = datetime.now().strftime("%Y_%m_%d")
+    log_file = cache_path / f"log_{date}.log"
+
+    if not log_file.exists():
+        log_file.touch()
+
+    return log_file
+
+
+# Configuracion de logging
+log_file = create_log()
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename=log_file,
+    format="%(asctime)s:%(levelname)s:%(message)s",
+    datefmt="%d/%m/%Y")
+
+
 def error(msg: str):
     """Envía un mensaje de error.
 
@@ -26,6 +58,7 @@ def error(msg: str):
         msg {str} -- Error que ocurrió.
     """
     print(f"\n{Fore.RED}{Style.BRIGHT}Error:", f"{Fore.WHITE}{Style.BRIGHT}{msg}")
+    logging.error(msg)
 
 
 def warn(msg: str):
@@ -35,6 +68,7 @@ def warn(msg: str):
         msg {str} -- Advertencia que se debe mostrar.
     """
     print(f"\n{Fore.YELLOW}{Style.BRIGHT}{msg}")
+    logging.warning(msg)
 
 
 def info(msg: str):
@@ -43,7 +77,8 @@ def info(msg: str):
     Arguments:
         msg {str} -- Informacion que se debe mostrar.
     """
-    print(f"\n{Fore.CYAN}{Style.DIM}{msg}")
+    print(f"\n{Fore.LIGHTGREEN_EX}{msg}")
+    logging.info(msg)
 
 
 def clear():
@@ -160,7 +195,7 @@ class Commands(Transformer):
                 name.touch()
                 info(f"Se ha creado '{name}'.")
             else:
-                error(f"El archivo '{name}' ya existe.")
+                warn(f"El archivo '{name}' ya existe.")
 
         except PermissionError:
             error("Permisos insuficientes.")
@@ -177,7 +212,7 @@ class Commands(Transformer):
                 name.mkdir()
                 info(f"Se ha creado '{name}'.")
             else:
-                error(f"El directorio '{name}' ya existe.")
+                warn(f"El directorio '{name}' ya existe.")
 
         except PermissionError:
             error("Permisos insuficientes.")
@@ -241,20 +276,27 @@ class Commands(Transformer):
 
     @convert_args
     def exec(self, args):
+
+        logging.info(f"Ejecutando script: {args[0]}")
         
         file = Path(args[0])
 
         try:
             start = time.time()
 
-            if not file.suffix == "nfe":
+            if not file.suffix == ".nfe":
                 raise Exception(f"El archivo '{file}' no es un script valido.")
 
             with open(file, "r") as file:
                 from parser import command_executor
                 
                 for line in file.readlines():
-                    command_executor(line)
+
+                    try:
+                        command_executor(line)
+
+                    except Exception as e:
+                        raise Exception(e)
 
             end = time.time()
             exec_time = end - start
@@ -269,6 +311,7 @@ class Commands(Transformer):
             end = time.time()
             exec_time = end - start
             print(f"{Fore.RED}Ejecucion Fallida. {exec_time} segundos.")
+            logging.error(f"Ejecucion fallida: {e}")
 
         else:
             info(f"Ejecucion finalizada en {exec_time} segundos.")
@@ -276,6 +319,7 @@ class Commands(Transformer):
 
     def exit(self, args):
         """Sale del interprete"""
+        logging.info("Saliendo del shell.")
         clear()
         exit()
 
@@ -316,6 +360,11 @@ class Commands(Transformer):
         
         except Exception as e:
             error(e)
+
+
+    @convert_args
+    def info(self, args):
+        info(args[0])
 
 
     @convert_args
