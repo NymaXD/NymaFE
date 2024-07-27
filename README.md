@@ -158,6 +158,11 @@ Comandos para funciones generales.
 
         help list
 
+* ### info
+  <p>Imprime un mensaje en consola.</p>
+
+      info "Mensaje"
+
 * ### ls / list
   <p>Lista archivos y carpetas en el directorio actual</p>
 
