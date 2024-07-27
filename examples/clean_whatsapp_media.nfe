@@ -1,0 +1,5 @@
+home
+cd "AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\shared"
+del transfers
+info "Se ha limpiado la cache multimedia de WhatsApp Desktop."
+home
