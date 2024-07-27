@@ -1,6 +1,0 @@
-cd -o /carpeta
-create new_file.txt
-ls
-write new_file.txt "Hello world!"
-back
-exit

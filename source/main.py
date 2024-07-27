@@ -2,7 +2,7 @@
 
 from parser import command_executor
 from commands import error, warn, clear
-from lark.exceptions import UnexpectedToken, UnexpectedCharacters
+from lark.exceptions import UnexpectedToken, UnexpectedCharacters, UnexpectedEOF
 
 def main():
     """Main interface"""
@@ -20,12 +20,16 @@ def main():
             warn("Ctrl + C")
 
         except UnexpectedToken as e:
-            error("Comando desconocido. Escribe 'help' para mas informacion.")
-            print(e)
+            error("Error de sintaxis. Escribe 'help' para más informacion.")
 
         except UnexpectedCharacters as e:
-            error("Error de sintaxis.")
-            print(e)
+            error("Error de sintaxis. Escribe 'help' para más informacion.")
+
+        except UnexpectedEOF as e:
+            error("Error de sintaxis. Escribe 'help' para más informacion.")
+            
+        except Exception as e:
+            error(e)
 
 
 if __name__ == "__main__":

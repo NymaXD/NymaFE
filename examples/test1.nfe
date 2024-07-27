@@ -1,0 +1,6 @@
+home
+create -d "New Folder"
+cd "New Folder"
+create new_file.txt
+ls
+write new_file.txt "Hello world!"
