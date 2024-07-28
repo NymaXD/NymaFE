@@ -8,4 +8,4 @@
 
 * <a href="https://github.com/NymaXD/NymaFE/wiki">Wiki</a>
 * <a href="https://github.com/NymaXD/NymaFE/wiki/Lista-de-Comandos">Lista de comandos</a>
-* <a href="">Video tutorial</a>
+* <a href="https://drive.google.com/file/d/1yovX1-__VWLA7BFbcRzmGpxnJRFRprOy/view?usp=sharing">Video tutorial</a>
