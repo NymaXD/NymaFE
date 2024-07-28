@@ -6,6 +6,6 @@
 
 ## :paperclip: Enlaces útiles
 
-* <a href="https://github.com/NymaXD/NymaFE/tree/main/tutorial#question-tutorial">Tutorial</a>
-* <a href="https://github.com/NymaXD/NymaFE/tree/main/tutorial#book-lista-de-comandos">Lista de comandos</a>
+* <a href="https://github.com/NymaXD/NymaFE/wiki">Wiki</a>
+* <a href="https://github.com/NymaXD/NymaFE/wiki/Lista-de-Comandos">Lista de comandos</a>
 * <a href="">Video tutorial</a>
